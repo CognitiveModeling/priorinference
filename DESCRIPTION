@@ -1,0 +1,22 @@
+Package: RSApackage
+Type: Package
+Title: Rational Speech Act Model Package
+Version: 0.1.0
+Author: Martin V. Butz
+Maintainer: Hania Gaber Elkersh <hania.elkersh@student.uni-tuebingen.de>
+Description: This package contains all the functions of the common code of the RSA model. 
+ This package was designed to analyze and model data for Experiments 1 and 2 in the paper
+ Learning about others: Modeling social inference through ambiguity resolution (Achimova et al. 2020).
+URL: http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/4-pilot-training/prior-inference.html
+     http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/3-pilot-utterance-choice/prior-inference.html
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+RoxygenNote: 7.1.1
+Imports:
+VignetteBuilder: knitr
+
