@@ -18,3 +18,7 @@ library("devtools")
 ```
 install_github("haniaelkersh/rsa-publish-test")
 ```
+[RSApackage](https://haniaelkersh.github.io/RSApack.github.io/) 0.1.0
+
+-   [Home](https://haniaelkersh.github.io/RSApack.github.io/index.html)
+-   [Functions](https://haniaelkersh.github.io/RSApack.github.io/reference/index.html)
