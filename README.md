@@ -20,5 +20,5 @@ install_github("haniaelkersh/rsa-publish-test")
 ```
 [RSApackage](https://haniaelkersh.github.io/rsa-publish-test) 0.1.0
 
--   [Home](https://haniaelkersh.github.io/rsa-publish-test)
--   [Functions](https://haniaelkersh.github.io/rsa-publish-test)
+-   [Home](https://haniaelkersh.github.io/rsa-publish-test/index.html)
+-   [Functions](https://haniaelkersh.github.io/rsa-publish-test/reference/index.html)
