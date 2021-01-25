@@ -44,6 +44,6 @@ Participants encountered a reference game scenario similar to Experiment 1. The 
 Each trial featured a set of three objects. Participants adjusted sliders to indicate whether a single-feature utterance could help the speaker learn about the preferences of their listener. Potential utterances corresponded to the features of the objects present; depending on the number of unique features, participants adjusted between three and nine sliders.
 
 
-<img width="600" alt="utterance-choice-trial" src="https://user-images.githubusercontent.com/40029289/105725855-b59a0580-5f29-11eb-98b2-e1bd32635035.png">
+<img width="500" alt="utterance-choice-trial" src="https://user-images.githubusercontent.com/40029289/105725855-b59a0580-5f29-11eb-98b2-e1bd32635035.png">
 
 [click here to see the experiment](http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/3-pilot-utterance-choice/prior-inference.html)
