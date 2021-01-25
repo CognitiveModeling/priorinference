@@ -31,6 +31,8 @@ The goal of Experiment 1 is to check the inferences of the pragmatic speaker hav
 #### Task
 Participants were presented with a series of reference game scenarios modeled after Figure 1 from (Frank & Goodman, 2012). Each scenario featured two people (simulated speaker and listener) and three objects. The sets of objects used could vary along three dimensions (shape, texture and color). The speaker produced a single-word utterance (e.g. “cloud”) to refer to one of the objects and the listener picked one of the objects in response. Experiment participants were told that the listener might have a preference for certain object features: For example, she might prefer clouds over squares, or red things over green things. The participants’ task was to infer those preferences by adjusting the sliders for each of the features after observing the speaker’s utterance and the listener’s object choice.
 
+![alt text](https://github.com/[haniaelkersh]/[rsa-publish-test]/blob/[main]/preference-trial.png?raw=true)
+
 [click here to see the experiment](http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/4-pilot-training/prior-inference.html)
 
 ### Experiment 2
