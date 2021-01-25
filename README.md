@@ -23,3 +23,8 @@ Visit the [website](https://haniaelkersh.github.io/rsa-publish-test/index.html) 
 
 ## To replicate the experiments 1 and 2 from the paper open the matching manual and follow the steps.
 
+### Experiment 1
+#### [Link for the experiment:] (http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/4-pilot-training/prior-inference.html)
+
+### Experiment 2
+
