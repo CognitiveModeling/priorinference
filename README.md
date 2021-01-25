@@ -19,4 +19,4 @@ library("devtools")
 install_github("haniaelkersh/rsa-publish-test")
 ```
 
-Visit the website to look at the documentation of the [functions:](https://haniaelkersh.github.io/rsa-publish-test/reference/index.html)
+Visit the website to look at the documentation of the [functions](https://haniaelkersh.github.io/rsa-publish-test/reference/index.html).
