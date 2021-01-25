@@ -20,3 +20,6 @@ install_github("haniaelkersh/rsa-publish-test")
 ```
 
 Visit the [website](https://haniaelkersh.github.io/rsa-publish-test/index.html) to look at the documentation of the [functions](https://haniaelkersh.github.io/rsa-publish-test/reference/index.html).
+
+## To replicate the experiments 1 and 2 from the paper open the matching manual and follow the steps.
+
