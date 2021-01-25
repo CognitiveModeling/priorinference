@@ -4,6 +4,7 @@ This package contains all the functions of the common code of the RSA model. Thi
 
 ## To be able to use the RSApackage you need to follow these steps:
 1. Install the package `devtools`.
+
 Run the code below:
 ```
 install.packages("devtools")
@@ -25,7 +26,7 @@ Visit the [website](https://haniaelkersh.github.io/rsa-publish-test/index.html) 
 
 ### Experiment 1
 #### _Inferring preferences_
-The goal of Experiment 1 is to check the inferences of the pragmatic speaker having observed that a listener selects some objects in response to an utterance u. Is it possible to draw inferences about the most likely preferences the listener had when making her choice? Can this inference process be modeled by our RSA model—that is, by recursive Bayesian inference?
+The goal of Experiment 1 is to check the inferences of the pragmatic speaker having observed that a listener selects some objects in response to an utterance _u_. Is it possible to draw inferences about the most likely preferences the listener had when making her choice? Can this inference process be modeled by our RSA model—that is, by recursive Bayesian inference?
 
 #### Task
 Participants were presented with a series of reference game scenarios modeled after Figure 1 from (Frank & Goodman, 2012). Each scenario featured two people (simulated speaker and listener) and three objects. The sets of objects used could vary along three dimensions (shape, texture and color). The speaker produced a single-word utterance (e.g. “cloud”) to refer to one of the objects and the listener picked one of the objects in response. Experiment participants were told that the listener might have a preference for certain object features: For example, she might prefer clouds over squares, or red things over green things. The participants’ task was to infer those preferences by adjusting the sliders for each of the features after observing the speaker’s utterance and the listener’s object choice.
@@ -34,7 +35,7 @@ Participants were presented with a series of reference game scenarios modeled af
 
 ### Experiment 2
 #### _Epistemic utterance choice_
-The goal of Experiment 2 is to check the predictions of the strategic utterance selection model. Given a set of potential referents _S_, will participants reason pragmatically about the anticipated potential epistemic utility of utterances $u \in U$ for inferring the listener’s preferences?
+The goal of Experiment 2 is to check the predictions of the strategic utterance selection model. Given a set of potential referents _S_, will participants reason pragmatically about the anticipated potential epistemic utility of utterances $$u \in U$$ for inferring the listener’s preferences?
 
 #### Task
 Participants encountered a reference game scenario similar to Experiment 1. The task was to help the speaker choose an utterance that was most likely to reveal the listener’s shape, pattern or color preferences. The same sets of objects from Experiment 1, which could vary along three dimensions, were used.
