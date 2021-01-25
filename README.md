@@ -31,7 +31,7 @@ The goal of Experiment 1 is to check the inferences of the pragmatic speaker hav
 #### Task
 Participants were presented with a series of reference game scenarios modeled after Figure 1 from (Frank & Goodman, 2012). Each scenario featured two people (simulated speaker and listener) and three objects. The sets of objects used could vary along three dimensions (shape, texture and color). The speaker produced a single-word utterance (e.g. “cloud”) to refer to one of the objects and the listener picked one of the objects in response. Experiment participants were told that the listener might have a preference for certain object features: For example, she might prefer clouds over squares, or red things over green things. The participants’ task was to infer those preferences by adjusting the sliders for each of the features after observing the speaker’s utterance and the listener’s object choice.
 
-<img width="600" alt="preference-trial" src="https://user-images.githubusercontent.com/40029289/105725656-87b4c100-5f29-11eb-9668-2a167e99809c.png" >
+<img width="400" alt="preference-trial" src="https://user-images.githubusercontent.com/40029289/105725656-87b4c100-5f29-11eb-9668-2a167e99809c.png" >
 
 [click here to see the experiment](http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/4-pilot-training/prior-inference.html)
 
@@ -44,6 +44,6 @@ Participants encountered a reference game scenario similar to Experiment 1. The 
 Each trial featured a set of three objects. Participants adjusted sliders to indicate whether a single-feature utterance could help the speaker learn about the preferences of their listener. Potential utterances corresponded to the features of the objects present; depending on the number of unique features, participants adjusted between three and nine sliders.
 
 
-<img width="500" alt="utterance-choice-trial" src="https://user-images.githubusercontent.com/40029289/105725855-b59a0580-5f29-11eb-98b2-e1bd32635035.png">
+<img width="400" alt="utterance-choice-trial" src="https://user-images.githubusercontent.com/40029289/105725855-b59a0580-5f29-11eb-98b2-e1bd32635035.png">
 
 [click here to see the experiment](http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/3-pilot-utterance-choice/prior-inference.html)
