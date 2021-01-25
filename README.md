@@ -34,7 +34,7 @@ Participants were presented with a series of reference game scenarios modeled af
 
 ### Experiment 2
 #### _Epistemic utterance choice_
-The goal of Experiment 2 is to check the predictions of the strategic utterance selection model. Given a set of potential referents _S_, will participants reason pragmatically about the anticipated potential epistemic utility of utterances \code{u \in U} for inferring the listener’s preferences?
+The goal of Experiment 2 is to check the predictions of the strategic utterance selection model. Given a set of potential referents _S_, will participants reason pragmatically about the anticipated potential epistemic utility of utterances $u \in U$ for inferring the listener’s preferences?
 
 #### Task
 Participants encountered a reference game scenario similar to Experiment 1. The task was to help the speaker choose an utterance that was most likely to reveal the listener’s shape, pattern or color preferences. The same sets of objects from Experiment 1, which could vary along three dimensions, were used.
