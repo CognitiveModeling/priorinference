@@ -889,7 +889,7 @@ RSAModelKLDiv3params_simpleRSA4TrialsIndependent<- function(data, par1, par2) {
 # @return resultMat .
 # @examples
 # @export
-getPostListPrefsForAllConstellations_simpleRSADEPRECATED <- function(softPrefValue=0, nonObedience=0, alpha=1) {
+getPostListPrefsForAllConstellations_simpleRSADEPRECATED <- function(softPrefValue=0, nonObedience=0) {
   resultMat <- matrix(0, 1+ (27*27*27*3), 28)
   for(o1 in c(1:27)) {
     print(o1)
@@ -908,7 +908,7 @@ getPostListPrefsForAllConstellations_simpleRSADEPRECATED <- function(softPrefVal
           resultMat[row,13] <- featChoice
           resultMat[row,14:19] <- getConstellationCode(objectConstellation, featChoice)
           resultMat[row,20:28] <- determineSpeakerPostListPrefsSimpleRSA(objectConstellation, featChoice,
-                                                                softPrefValue, nonObedience, alpha)
+                                                                softPrefValue, nonObedience)
         }
       }
     }
