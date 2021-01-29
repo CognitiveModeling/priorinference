@@ -20,7 +20,7 @@ library("devtools")
 install_github("haniaelkersh/priorinference@HEAD")
 ```
 
-Visit the [website](https://haniaelkersh.github.io/priorinference/docs/index.html) to look at the documentation of the [functions](https://haniaelkersh.github.io/priorinference/docs/reference/index.html).
+Visit the [website](https://haniaelkersh.github.io/priorinference/index.html) to look at the documentation of the [functions](https://haniaelkersh.github.io/priorinference/reference/index.html).
 
 ## Description of the Experiments 1 and 2
 
