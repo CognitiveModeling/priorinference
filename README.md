@@ -17,7 +17,7 @@ library("devtools")
 
 3. Now you will be able to install the `RSApackage` by running:
 ```
-install_github("haniaelkersh/rsa-publish-test")
+install_github("haniaelkersh/rsa-publish-test@HEAD")
 ```
 
 Visit the [website](https://haniaelkersh.github.io/rsa-publish-test/index.html) to look at the documentation of the [functions](https://haniaelkersh.github.io/rsa-publish-test/reference/index.html).
