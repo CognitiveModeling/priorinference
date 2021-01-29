@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cost function for two parameter optimization.
-Optimizing softness and non-obedience. — RSAModelLL2_simpleRSA • priorinference</title>
+<title>Experiment 2 raw data (Epistemic utterance choice) — X3_rawData • priorinference</title>
 
 
 <!-- jquery -->
@@ -40,10 +39,8 @@ Optimizing softness and non-obedience. — RSAModelLL2_simpleRSA • priorinfere
 
 
 
-<meta property="og:title" content="Cost function for two parameter optimization.
-Optimizing softness and non-obedience. — RSAModelLL2_simpleRSA" />
-<meta property="og:description" content="Simple RSA
-2 parameter optimization; The softness and non-obedience parameter are optimized." />
+<meta property="og:title" content="Experiment 2 raw data (Epistemic utterance choice) — X3_rawData" />
+<meta property="og:description" content="This file contains the raw data from the utterance choice experiment." />
 
 
 
@@ -106,55 +103,52 @@ Optimizing softness and non-obedience. — RSAModelLL2_simpleRSA" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Cost function for two parameter optimization.
-Optimizing softness and non-obedience.</h1>
+    <h1>Experiment 2 raw data (Epistemic utterance choice)</h1>
     
-    <div class="hidden name"><code>RSAModelLL2_simpleRSA.Rd</code></div>
+    <div class="hidden name"><code>X3_rawData.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Simple RSA</p>
-<p>2 parameter optimization; The softness and non-obedience parameter are optimized.</p>
+    <p>This file contains the raw data from the utterance choice experiment.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>RSAModelLL2_simpleRSA</span><span class='op'>(</span><span class='va'>params</span>, <span class='va'>data</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>X3_rawData</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>params</th>
-      <td><p>Two value vector specifying two of the two parameters to be optimized:</p><ol>
-<li><p>softPrefValue parameter is optimized, i.e. The strength of "preferring one entity over others". (The larger the value the higher the tendency towards uniform liking).</p></li>
-<li><p>non-obedience parameter is fixed at 0.1, i.e. The extent to which the instruction of the speaker is obeyed by the listener.
-(0 = full obedience, infinity = full instruction ignorance).</p></li>
-</ol></td>
-    </tr>
-    <tr>
-      <th>data</th>
-      <td><p>A matrix with data rows.</p>
-<p>column structure:</p>
-<p>[1:OC1,OC2,OC3,4:UUFeat, 5:Q1Feat,6:Q2Feat]</p>
-<p>[7:Q1AnswerV1,V2,V3, 10:Q2AnswerV1,V2,V3]</p>
-<p><strong>1:OC1</strong> Object 1. A value between 1 and 27.</p>
-<p><strong>2:OC2</strong> Object 2. A value between 1 and 27.</p>
-<p><strong>3:OC3</strong> Object 3. A value between 1 and 27.</p>
-<p><strong>4:UUFeat</strong> Uttered feature. A number between 1 and 3. (1: shape, 2: pattern, 3: color)</p>
-<p><strong>5:Q1Feat</strong> Questioned feature 1. A number between 1 and 3. (1: shape, 2: pattern, 3: color).</p>
-<p>Example: If you utter "blue" (feature: color), then you can learn something about shape and texture preferences.</p>
-<p><strong>6:Q2Feat</strong> Questioned feature 2. A number between 1 and 3. (1: shape, 2: pattern, 3: color).</p>
-<p>Example: If you utter "blue" (feature: color), then you can learn something about shape and texture preferences.</p>
-<p><strong>7:Q1AnswerV1, V2, V3</strong> The columns 7-9 contain the participants' slider values for the first questioned feature.</p>
-<p><strong>10:Q2AnswerV1, V2, C3</strong> The columns 10-12 contain the participants' slider values for the second questioned feature.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Minimized Kullback-Leibler divergence and the optimal parameters.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p>A data frame with the following columns:</p><dl>
+  <dt>workerid</dt><dd><p>Participant's ID</p></dd>
+  
+  <dt>item</dt><dd><p>Unique ID of a stimulus</p></dd>
+  
+  <dt>slide_number</dt><dd><p>Indicates trial order.</p></dd>
+  
+  <dt>condition</dt><dd><p>A six-digit code that infers to which category the item belongs. 
+  In this experiment, it is only necessary to identify classes that have 
+  potentially ambiguous utterances.</p></dd>
+  
+  <dt>language</dt><dd><p>Participant self-reported native language</p></dd>
+  
+  <dt>pref1-pref9</dt><dd><p>Utterance 1-9.</p></dd>
+  
+  <dt>response1- response9</dt><dd><p>The value to which the slider (1-9) was adjusted 
+  by the participant. Indicates how useful an utterance is for finding out 
+  listener preferences. The corresponding property that they are rating is 
+  stored under pref1-9. Can be in range 0-1.  Small numbers mean less useful, larger numbers mean more useful.</p></dd>
+  
+  <dt>obj1, obj2, obj3</dt><dd><p>A three-digit code referring to the object that the 
+  speaker intends to signal by the utterance (obj1), or to one of the other 
+  two objects present in the scene (obj2, obj3).  The first digit of the code refers to shape, the second digit to texture, 
+  and the third digit to color of the object.  <strong>1 Shape:</strong> 1 cloud, 2 circle, 3 square  <strong>2 Texture:</strong> 1 solid, 2 striped, 3 polka-dotted  <strong>3 Color:</strong> 1 blue, 2 red, 3 green  <strong>Example:</strong> If the target is a solid blue square the code would be: 311.</p></dd>
+  
+  <dt>ambiguous</dt><dd><p>Marks whether a trial contains any ambiguous utterances.</p></dd>
+  
+  <dt>numFeatures</dt><dd><p>The number of feature values present in a scene.   For example, if we have 3 red objects, all of them solid, 1 square, 1 cloud, 
+  1 circle, then the number of features would be 5.  Value in range 3-9.</p></dd>
 
-    <p>This function uses <code><a href='RSAModelKLDiv3paramsOnlyAvailableFeatureValuesConsidered_simpleRSA.html'>RSAModelKLDiv3paramsOnlyAvailableFeatureValuesConsidered_simpleRSA</a></code>.</p>
+</dl>
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

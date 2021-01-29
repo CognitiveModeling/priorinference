@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rational Speech Act Model Package • RSApackage</title>
+<title>Prior Inference Package • priorinference</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Rational Speech Act Model Package">
-<meta property="og:description" content="This package contains all the functions of the common code of the RSA model. 
+<script src="pkgdown.js"></script><meta property="og:title" content="Prior Inference Package">
+<meta property="og:description" content="This package contains all the functions of the common code of the prior inference and utterance choice models. 
  This package was designed to analyze and model data for Experiments 1 and 2 in the paper
  Learning about others: Modeling social inference through ambiguity resolution (Achimova et al. 2020).">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -32,7 +32,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">RSApackage</a>
+        <a class="navbar-link" href="index.html">priorinference</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
@@ -61,25 +61,65 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="rsapackage---test" class="section level1">
+<div id="prior-inference-r-package" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#rsapackage---test" class="anchor"></a>RSApackage - test</h1></div>
-<p>This package contains all the functions of the common code of the RSA model. This package was designed to analyze and model data for Experiments 1 and 2 in the paper Learning about others: Modeling social inference through ambiguity resolution (Achimova et al. (submitted)).</p>
-<div id="to-be-able-to-use-the-rsapackage-you-need-to-follow-these-steps" class="section level2">
+<a href="#prior-inference-r-package" class="anchor"></a>prior inference R package</h1></div>
+<p>This package contains all the functions of the common code of the prior inference and utterance choice models. It was designed to analyze and model data for Experiments 1 and 2 in the paper <em>Learning about others: Modeling social inference through ambiguity resolution</em> (Asya Achimova, Gregory Scontras, Christian Stegemann-Philipps, Johannes Lohmann, Martin V. Butz (submitted)).</p>
+<div id="to-be-able-to-use-the-priorinference-package-you-need-to-follow-these-steps" class="section level2">
 <h2 class="hasAnchor">
-<a href="#to-be-able-to-use-the-rsapackage-you-need-to-follow-these-steps" class="anchor"></a>To be able to use the RSApackage you need to follow these steps:</h2>
+<a href="#to-be-able-to-use-the-priorinference-package-you-need-to-follow-these-steps" class="anchor"></a>To be able to use the <code>priorinference</code> package you need to follow these steps:</h2>
 <ol>
-<li>Install the package <code>devtools</code>. Run the code below:</li>
+<li>Install the package <code>devtools</code>.</li>
 </ol>
+<p>Run the code below:</p>
 <pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("devtools")</a></code></pre>
 <ol>
 <li>Run the command:</li>
 </ol>
 <pre><code><a href="https://devtools.r-lib.org/">library("devtools")</a></code></pre>
 <ol>
-<li>Now you will be able to install the <code>RSApackage</code> by running:</li>
+<li>Now you will be able to install the <code>priorinference</code> by running:</li>
 </ol>
-<pre><code>install_github("haniaelkersh/rsa-publish-test")</code></pre>
+<pre><code>install_github("haniaelkersh/priorinference@HEAD")</code></pre>
+<p>Visit the <a href="https://haniaelkersh.github.io/priorinference/index.html">website</a> to look at the documentation of the <a href="https://haniaelkersh.github.io/priorinference/reference/index.html">functions</a>.</p>
+</div>
+<div id="description-of-the-experiments-1-and-2" class="section level2">
+<h2 class="hasAnchor">
+<a href="#description-of-the-experiments-1-and-2" class="anchor"></a>Description of the Experiments 1 and 2</h2>
+<div id="experiment-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#experiment-1" class="anchor"></a>Experiment 1</h3>
+<div id="inferring-preferences" class="section level4">
+<h4 class="hasAnchor">
+<a href="#inferring-preferences" class="anchor"></a><em>Inferring preferences</em>
+</h4>
+<p>The goal of Experiment 1 is to check the inferences of the pragmatic speaker having observed that a listener selects some objects in response to an utterance <img src="https://render.githubusercontent.com/render/math?math=u">. Is it possible to draw inferences about the most likely preferences the listener had when making her choice? Can this inference process be modeled by our RSA model—that is, by recursive Bayesian inference?</p>
+</div>
+<div id="task" class="section level4">
+<h4 class="hasAnchor">
+<a href="#task" class="anchor"></a>Task</h4>
+<p>Participants were presented with a series of reference game scenarios modeled after Figure 1 from (Frank &amp; Goodman, 2012). Each scenario featured two people (simulated speaker and listener) and three objects. The sets of objects used could vary along three dimensions (shape, texture and color). The speaker produced a single-word utterance (e.g. “cloud”) to refer to one of the objects and the listener picked one of the objects in response. Experiment participants were told that the listener might have a preference for certain object features: For example, she might prefer clouds over squares, or red things over green things. The participants’ task was to infer those preferences by adjusting the sliders for each of the features after observing the speaker’s utterance and the listener’s object choice.</p>
+<p><img width="400" alt="preference-trial" src="https://user-images.githubusercontent.com/40029289/105725656-87b4c100-5f29-11eb-9668-2a167e99809c.png"></p>
+<p><a href="http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/4-pilot-training/prior-inference.html">click here to see the experiment</a></p>
+</div>
+</div>
+<div id="experiment-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#experiment-2" class="anchor"></a>Experiment 2</h3>
+<div id="epistemic-utterance-choice" class="section level4">
+<h4 class="hasAnchor">
+<a href="#epistemic-utterance-choice" class="anchor"></a><em>Epistemic utterance choice</em>
+</h4>
+<p>The goal of Experiment 2 is to check the predictions of the strategic utterance selection model. Given a set of potential referents <img src="https://render.githubusercontent.com/render/math?math=S">, will participants reason pragmatically about the anticipated potential epistemic utility of utterances <img src="https://render.githubusercontent.com/render/math?math=u%20%5Cin%20U"> for inferring the listener’s preferences?</p>
+</div>
+<div id="task-1" class="section level4">
+<h4 class="hasAnchor">
+<a href="#task-1" class="anchor"></a>Task</h4>
+<p>Participants encountered a reference game scenario similar to Experiment 1. The task was to help the speaker choose an utterance that was most likely to reveal the listener’s shape, pattern or color preferences. The same sets of objects from Experiment 1, which could vary along three dimensions, were used. Each trial featured a set of three objects. Participants adjusted sliders to indicate whether a single-feature utterance could help the speaker learn about the preferences of their listener. Potential utterances corresponded to the features of the objects present; depending on the number of unique features, participants adjusted between three and nine sliders.</p>
+<p><img width="400" alt="utterance-choice-trial" src="https://user-images.githubusercontent.com/40029289/105725855-b59a0580-5f29-11eb-98b2-e1bd32635035.png"></p>
+<p><a href="http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/3-pilot-utterance-choice/prior-inference.html">click here to see the experiment</a></p>
+</div>
+</div>
 </div>
 </div>
   </div>
