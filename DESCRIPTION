@@ -1,10 +1,11 @@
-Package: RSApackage
+Package: priorinference
 Type: Package
-Title: Rational Speech Act Model Package
+Title: Prior Inference Package
 Version: 0.1.0
-Author: Martin V. Butz
+Author: Martin V. Butz, Hania Gaber Elkersh, Asya Achimova, Johannes Lohmann, 
+ Christian Stegemann-Philipps, Gregory Scontras
 Maintainer: Hania Gaber Elkersh <hania.elkersh@student.uni-tuebingen.de>
-Description: This package contains all the functions of the common code of the RSA model. 
+Description: This package contains all the functions of the common code of the prior inference and utterance choice models. 
  This package was designed to analyze and model data for Experiments 1 and 2 in the paper
  Learning about others: Modeling social inference through ambiguity resolution (Achimova et al. 2020).
 URL: http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/4-pilot-training/prior-inference.html
