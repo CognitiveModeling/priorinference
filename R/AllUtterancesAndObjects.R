@@ -26,7 +26,7 @@
 #' ('cloud', 'circle', 'square', 'solid', 'striped', 'polka-dotted', 'blue', 'red', 'green')
 #'
 #' @details
-#' The difference between this matrix and the \code{\link{allUtterances}} is that
+#' The difference between this vector and the \code{\link{allUtterances}} is that
 #' the 'polka-dotted' pattern is called \emph{dotted}.
 #' @export
   allUtterancesNew <- c('cloud', 'circle', 'square', 'solid', 'striped', 'polka-dotted', 'blue', 'red', 'green')
