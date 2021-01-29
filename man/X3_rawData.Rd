@@ -3,7 +3,7 @@
 \docType{data}
 \name{X3_rawData}
 \alias{X3_rawData}
-\title{Experiment 2 raw data (Epistemic utterance choice)}
+\title{Experiment 2 raw data (epistemic utterance choice)}
 \format{
 A data frame with the following columns: 
 \describe{

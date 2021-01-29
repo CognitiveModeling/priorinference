@@ -3,7 +3,7 @@
 \docType{data}
 \name{X4_rawData}
 \alias{X4_rawData}
-\title{Experiment 1 raw data (Inferring preferences)}
+\title{Experiment 1 raw data (inferring preferences)}
 \format{
 A data frame with the following columns: 
 \describe{

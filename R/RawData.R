@@ -1,4 +1,4 @@
-#' Experiment 1 raw data (Inferring preferences)
+#' Experiment 1 raw data (inferring preferences)
 #'
 #' This file contains the raw data from prior inference experiment.
 #'
@@ -106,7 +106,7 @@
 #' @keywords datasets
 "X4_rawData"
 
-#' Experiment 2 raw data (Epistemic utterance choice)
+#' Experiment 2 raw data (epistemic utterance choice)
 #'
 #' This file contains the raw data from the utterance choice experiment.
 #'
