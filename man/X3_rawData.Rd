@@ -5,6 +5,7 @@
 \alias{X3_rawData}
 \title{Experiment 2 raw data (Epistemic utterance choice)}
 \format{
+A data frame with the following columns: 
 \describe{
   \item{workerid}{Participant's ID}
   
@@ -23,7 +24,7 @@
   \item{response1- response9}{The value to which the slider (1-9) was adjusted 
   by the participant. Indicates how useful an utterance is for finding out 
   listener preferences. The corresponding property that they are rating is 
-  stored under pref1-9. Can be in range 0−1.
+  stored under pref1-9. Can be in range 0-1.
   
   Small numbers mean less useful, larger numbers mean more useful.}
   
@@ -34,11 +35,11 @@
   The first digit of the code refers to shape, the second digit to texture, 
   and the third digit to color of the object.
   
-  \strong{1 Shape:} 1 cloud, 2 circle, 3 square;
+  \strong{1 Shape:} 1 cloud, 2 circle, 3 square
   
-  \strong{2 Texture:} 1 solid, 2 striped, 3 polka-dotted;
+  \strong{2 Texture:} 1 solid, 2 striped, 3 polka-dotted
   
-  \strong{3 Color:} 1 blue, 2 red, 3 green.
+  \strong{3 Color:} 1 blue, 2 red, 3 green
   
   \strong{Example:} If the target is a solid blue square the code would be: 311.}
   
