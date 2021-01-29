@@ -1,6 +1,6 @@
 # prior inference R package 
 
-This package contains all the functions of the common code of the RSA model. It was designed to analyze and model data for Experiments 1 and 2 in the paper _Learning about others: Modeling social inference through ambiguity resolution_ (Asya Achimova, Gregory Scontras, Christian Stegemann-Philipps, Johannes Lohmann, Martin V. Butz (submitted)).
+This package contains all the functions of the common code of the prior inference and utterance choice models. It was designed to analyze and model data for Experiments 1 and 2 in the paper _Learning about others: Modeling social inference through ambiguity resolution_ (Asya Achimova, Gregory Scontras, Christian Stegemann-Philipps, Johannes Lohmann, Martin V. Butz (submitted)).
 
 ## To be able to use the priorinference package you need to follow these steps:
 1. Install the package `devtools`.
@@ -15,7 +15,7 @@ install.packages("devtools")
 library("devtools")
 ```
 
-3. Now you will be able to install the `RSApackage` by running:
+3. Now you will be able to install the `priorinference` by running:
 ```
 install_github("haniaelkersh/rsa-publish-test@HEAD")
 ```
