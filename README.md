@@ -22,6 +22,8 @@ install_github("haniaelkersh/priorinference@HEAD")
 
 Visit the [website](https://haniaelkersh.github.io/priorinference/index.html) to look at the documentation of the [functions](https://haniaelkersh.github.io/priorinference/reference/index.html).
 
+You can also [click here](https://haniaelkersh.github.io/priorinference_manual.pdf) to take a look at the pdf version of the manual.
+
 ## Description of the Experiments 1 and 2
 
 ### Experiment 1
