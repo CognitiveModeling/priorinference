@@ -1,5 +1,5 @@
-source("CommonCode/SRSA_StratUtt.R")
-source("CommonCode/SRSA_UttChoiceOptimization.R")
+source("R/SRSA_StratUtt.R")
+source("R/SRSA_UttChoiceOptimization.R")
 
 # loading the raw pilot data (as Greg sent it on 2018/12/21)
 x3pilotData <- read.csv("X3_Data/3-pilot-utterance-choice.csv")

@@ -1,5 +1,5 @@
-source("CommonCode/RSA_StratUtt.R")
-source("CommonCode/getConstCodeStratUtt.R")
+source("R/RSA_StratUtt.R")
+source("R/getConstCodeStratUtt.R")
 
 # loading the augmented pilot data file
 
