@@ -4,5 +4,5 @@
 .Ruserdata
 .Rproj
 .Rcheck
-rsa-publish-test.Rproj
 *.DS_Store
+priorinference.Rproj
