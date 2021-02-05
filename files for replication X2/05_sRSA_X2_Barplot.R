@@ -1,10 +1,9 @@
-setwd("~/git/prior_inference/RSA_for_cogsci_poster/")
-
 library(reshape2)
 library(Rmisc)
 library(ggplot2)
 
-data = read.csv("x3pilotDataModelOptimizedSorted.csv")
+data = read.csv("X2_data/x2pilotDataModelOptimizedSorted.csv")
+
 colnames(data) <- c("workerid","CCode","obj1","obj2","obj3","obj1OC27","obj2OC27","obj3OC27",
                     "DPost_1","DPost_2","DPost_3","DPost_4","DPost_5",
                     "DPost_6","DPost_7","DPost_8","DPost_9",
@@ -14,7 +13,7 @@ colnames(data) <- c("workerid","CCode","obj1","obj2","obj3","obj1OC27","obj2OC27
                     "MPost2_6","MPost2_7","MPost2_8","MPost2_9")
 summary(data$CCode)
 
-global <- read.csv("x3pilotDataModelOptimizedSorted_global.csv")
+global <- read.csv("X2_data/x2pilotDataModelOptimizedSorted_global.csv")
 colnames(global) <- c("workerid","CCode","obj1","obj2","obj3","obj1OC27","obj2OC27","obj3OC27",
                     "DPost_1","DPost_2","DPost_3","DPost_4","DPost_5",
                     "DPost_6","DPost_7","DPost_8","DPost_9",
@@ -102,4 +101,4 @@ ggplot(allStats, aes(x=sliderNumber, y=sliderValue, fill = type)) +
  ##        axis.title.y=element_text(size = 16),
 #         legend.text=element_text(size = 14))
   #ggsave("utterancePlot.pdf")
-ggsave("barplot_x3_withGlobal.pdf",width=6.5,height=4.5, units = "in")
+ggsave("X2_plots/barplot_x2_withGlobal.pdf",width=6.5,height=4.5, units = "in")

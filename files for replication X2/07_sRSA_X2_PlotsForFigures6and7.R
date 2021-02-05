@@ -1,13 +1,11 @@
 library("dplyr")
 library("ggplot2")
 
-################################################## X 3 Utterance choice ##################################
+################################################## X2 Utterance choice ##################################
 
 # Import full csv table
 
-setwd("~/Documents/GitHub/prior_inference/RSA_2019_08/X3_Plots")
-
-full <- read.csv("X3_Plots/for_scatterplots_x3_updated.csv")
+full <- read.csv("X2_plots/forFigures6and7.csv")
 head(full)
 
 ## See what models we have ##
@@ -18,7 +16,7 @@ stats <- full %>%
 ordered <- stats[order(stats$Nr),] # Sort the summary table
 print.data.frame(ordered)
 
-write.csv(ordered, file = "List_of_models_x3.csv")
+#write.csv(ordered, file = "List_of_models_x2.csv")
 ##########################################################################################################
 
 # Subset data for plotting. Fill in the template
@@ -66,7 +64,7 @@ figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   xlab("model predictions") +
   theme(plot.title = element_text(hjust = 0.5))
 print(figure)
-ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x3_m", nr,".pdf", sep=""))
+ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x2_m", nr,".pdf", sep=""))
 
 model <- lm(formula = plotData$model~plotData$workerData)
 summary(model)
@@ -91,7 +89,7 @@ plotData <- subset(full, softness == "individually_opt" & obedience == 0 &
                      cross_validated == "no" & type == "fullRSA" & 
                      alpha == 1) 
 # for m7
-# Shortcut to do subsets. List_of_models_x3.csv says which model is which
+# Shortcut to do subsets. List_of_models_x2.csv says which model is which
 
 plotData <- subset(full, Nr == 7)
 
@@ -118,7 +116,7 @@ figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   xlab("model predictions") +
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
 print(figure)
-ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x3_m", nr,".pdf", sep=""))
+ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x2_m", nr,".pdf", sep=""))
 
 model <- lm(formula = plotData$model~plotData$workerData)
 summary(model)
@@ -163,7 +161,7 @@ figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   xlab("model predictions") +
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
 print(figure)
-ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x3_m", nr,".pdf", sep=""))
+ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x2_m", nr,".pdf", sep=""))
 
 model <- lm(formula = plotData$model~plotData$workerData)
 summary(model)
@@ -207,7 +205,7 @@ figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   xlab("model predictions") +
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
 print(figure)
-ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x3_m", nr,".pdf", sep=""))
+ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x2_m", nr,".pdf", sep=""))
 
 model <- lm(formula = plotData$model~plotData$workerData)
 summary(model)
@@ -241,13 +239,13 @@ figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   labs(title = bquote(atop
                      (.(type) ~"," ~ r^2 == .(r2),
                        ~ "softness" == .(softness) ~ "," ~ "obedience" == .(obedience) ~ ","
-                       ~ "kappa" == .(kl_factor)
+                       ~ "lambda" == .(kl_factor)
                      )))+
   ylab("human data")+
   xlab("model predictions") +
   theme(plot.title = element_text(hjust = 0.5))
 #print(figure)
-ggsave(figure, filename = paste("x3_m", nr,".pdf", sep=""),width = 7, height = 7, units = "in")
+ggsave(figure, filename = paste("x2_m", nr,".pdf", sep=""),width = 7, height = 7, units = "in")
 
 
 ######## Global optimization plot ############
@@ -277,7 +275,7 @@ figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   xlab("model predictions") +
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
 print(figure)
-ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x3_m", nr,".pdf", sep=""))
+ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x2_m", nr,".pdf", sep=""))
 
 model <- lm(formula = plotData$model~plotData$workerData)
 summary(model)
