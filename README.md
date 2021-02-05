@@ -22,9 +22,9 @@ library("devtools")
 install_github("CognitiveModeling/priorinference@HEAD")
 ```
 
-Visit the [website](https://haniaelkersh.github.io/priorinference/index.html) to look at the documentation of the [functions](https://haniaelkersh.github.io/priorinference/reference/index.html).
+Visit the [website](https://cognitivemodeling.github.io/priorinference/index.html) to look at the documentation of the [functions](https://cognitivemodeling.github.io/priorinference/reference/index.html).
 
-You can also take a look at the pdf version of the manual [click here](https://github.com/haniaelkersh/priorinference/blob/main/priorinference_manual.pdf)
+You can also take a look at the pdf version of the manual [click here](https://cognitivemodeling.github.io/priorinference/blob/main/priorinference_manual.pdf)
 
 ## Description of the Experiments 1 and 2
 
