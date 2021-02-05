@@ -1,5 +1,7 @@
 # prior inference R package 
 
+**Authors of the package:** Martin V. Butz, Hania Gaber Elkersh, Asya Achimova, Gregory Scontras
+
 This package contains all the functions of the common code of the prior inference and utterance choice models. It was designed to analyze and model data for Experiments 1 and 2 in the paper _Learning about others: Modeling social inference through ambiguity resolution_ (Asya Achimova, Gregory Scontras, Christian Stegemann-Philipps, Johannes Lohmann, Martin V. Butz (submitted)).
 
 ## To be able to use the `priorinference` package you need to follow these steps:
