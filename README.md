@@ -19,7 +19,7 @@ library("devtools")
 
 3. Now you will be able to install the `priorinference` by running:
 ```
-install_github("haniaelkersh/priorinference@HEAD")
+install_github("CognitiveModeling/priorinference@HEAD")
 ```
 
 Visit the [website](https://haniaelkersh.github.io/priorinference/index.html) to look at the documentation of the [functions](https://haniaelkersh.github.io/priorinference/reference/index.html).
