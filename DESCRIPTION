@@ -2,8 +2,7 @@ Package: priorinference
 Type: Package
 Title: Prior Inference Package
 Version: 0.1.0
-Author: Martin V. Butz, Hania Gaber Elkersh, Asya Achimova, Johannes Lohmann, 
- Christian Stegemann-Philipps, Gregory Scontras
+Author: Martin V. Butz, Hania Gaber Elkersh, Asya Achimova, Gregory Scontras
 Maintainer: Hania Gaber Elkersh <hania.elkersh@student.uni-tuebingen.de>
 Description: This package contains all the functions of the common code of the prior inference and utterance choice models. 
  This package was designed to analyze and model data for Experiments 1 and 2 in the paper
