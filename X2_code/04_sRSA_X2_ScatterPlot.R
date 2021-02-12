@@ -1,13 +1,8 @@
 # loading the augmented pilot data file
 
-################### full RSA ########################
-
-### full RSA - individually optimized
-#x2pilotData <- read.csv("X2_data/x2pDataAugm_RSAindOpt_fixed_and_PrefOnly.csv")
-#x2pilotData <- read.csv("X2_data/x2pDataAugm_RSAindOpt_LambdaOnly_and_ObedAndLambda.csv")
-#x2pilotData <- read.csv("X2_data/x2pDataAugm_RSAindOpt_PrefAndLambda_and_PrefObedAndLambda.csv")
-
 ################### simple RSA ######################
+
+# NOTE: to generate these data files you need to run 03a, 03b and 03c depending on the model you are interested in.
 
 ### simple RSA - individually optimized
 #x2pilotData <- read.csv("X2_data/x2pDataAugm_sRSAindOpt_fixed001_and_fixed000.csv")

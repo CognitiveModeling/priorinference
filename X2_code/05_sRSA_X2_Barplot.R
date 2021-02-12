@@ -25,7 +25,6 @@ colnames(global) <- c("workerid","CCode","obj1","obj2","obj3","obj1OC27","obj2OC
 #sample2 <- subset(data, CCode == "22a1")
 #sample3 <- subset(data, CCode == "322a")
 
-#unsorted <- read.csv("x3pilotDataAugmV0_fixedAndD_052019.csv")
 # sample <- data.frame(apply(sample, 2, function(x) {x <- gsub("\"", "", x)}))
 
 sample <- subset(data, CCode == "22b2b")

@@ -16,7 +16,6 @@ stats <- full %>%
 ordered <- stats[order(stats$Nr),] # Sort the summary table
 print.data.frame(ordered)
 
-#write.csv(ordered, file = "List_of_models_x2.csv")
 ##########################################################################################################
 
 # Subset data for plotting. Fill in the template
