@@ -7,8 +7,8 @@ Maintainer: Hania Gaber Elkersh <hania.elkersh@student.uni-tuebingen.de>
 Description: This package contains all the functions of the common code of the prior inference and utterance choice models. 
  This package was designed to analyze and model data for Experiments 1 and 2 in the paper
  Learning about others: Modeling social inference through ambiguity resolution (Achimova et al. 2020).
-URL: http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/4-pilot-training/prior-inference.html
-     http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/3-pilot-utterance-choice/prior-inference.html
+URL: http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/inferring-preferences/prior-inference.html
+     http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/utterance-choice/prior-inference.html
 License: MIT License
 Encoding: UTF-8
 LazyData: true
