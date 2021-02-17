@@ -24,7 +24,7 @@ install_github("CognitiveModeling/priorinference@HEAD")
 
 Visit the [website](https://cognitivemodeling.github.io/priorinference/index.html) to look at the documentation of the [functions](https://cognitivemodeling.github.io/priorinference/reference/index.html).
 
-You can also take a look at the pdf version of the manual [click here](https://cognitivemodeling.github.io/priorinference/blob/main/priorinference_0.1.0_manual.pdf)
+You can also take a look at the pdf version of the manual [click here](https://github.com/CognitiveModeling/priorinference/blob/main/priorinference_0.1.0_manual.pdf)
 
 ## Description of the Experiments 1 and 2
 
@@ -37,7 +37,7 @@ Participants were presented with a series of reference game scenarios modeled af
 
 <img width="400" alt="preference-trial" src="https://user-images.githubusercontent.com/40029289/105725656-87b4c100-5f29-11eb-9668-2a167e99809c.png" >
 
-[click here to see the experiment](http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/4-pilot-training/prior-inference.html)
+[click here to see the experiment](http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/inferring-preferences/prior-inference.html)
 
 ### Experiment 2
 #### _Epistemic utterance choice_
@@ -50,4 +50,5 @@ Each trial featured a set of three objects. Participants adjusted sliders to ind
 
 <img width="400" alt="utterance-choice-trial" src="https://user-images.githubusercontent.com/40029289/105725855-b59a0580-5f29-11eb-98b2-e1bd32635035.png">
 
-[click here to see the experiment](http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/3-pilot-utterance-choice/prior-inference.html)
+[click here to see the experiment](
+http://www.socsci.uci.edu/~gscontra/experiments/prior_inference/utterance-choice/prior-inference.html)
