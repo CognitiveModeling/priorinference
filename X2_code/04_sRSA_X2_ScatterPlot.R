@@ -16,8 +16,7 @@
 #x2pilotData <- read.csv("X2_data/x2pDataAugm_sRSAglobalOpt_lambdaOnly_and_obedAndLambda.csv")
 #x2pilotData <- read.csv("X2_data/x2pDataAugm_sRSAglobalOpt_prefAndLambda_and_prefObedAndLambda.csv")
 
-
-#x2pilotData <- read.csv("X2_data/x2pDataAugm_sRSAcrossVal_LambdaOnly_and_PrefAndLambda.csv")
+x2pilotData <- read.csv("X2_data/x2pDataAugm_sRSAcrossVal_LambdaOnly_and_PrefAndLambda.csv")
 #x2pilotData <- read.csv("X2_data/x2pDataAugm_sRSAcrossVal_ObedAndLambda_and_PrefObedAndLambda.csv")
 
 ## adding the 1-27 target and object2 & object3 code.
@@ -74,23 +73,27 @@ modelGuessIndex2 <- grep("^MPost2_1", colnames(x2pilotData))
 x2pilotData$CCode <- uniqueCCode
 x2pilotData$featValOrder <- featureValueOrder
 
-modelDataOrdered <- matrix(-1,nrow(x2pilotData),34)
-for(i in c(1:length(x2pilotData$X))) {
-  for(j in c(1:length(x2pilotData$featValOrder[[i]]))) {
-    modelDataOrdered[i,7+j] <- x2pilotData[[subjectGuessIndexM1+x2pilotData$featValOrder[[i]][j]]][i] 
-    modelDataOrdered[i,16+j] <- x2pilotData[[modelGuessIndex1M1+x2pilotData$featValOrder[[i]][j]]][i] 
-    modelDataOrdered[i,25+j] <- x2pilotData[[modelGuessIndex2M1+x2pilotData$featValOrder[[i]][j]]][i] 
-  }
-}
-modelDataOrdered[,1] <- uniqueCCode
-modelDataOrdered[,2] <- x2pilotData$obj1
-modelDataOrdered[,3] <- x2pilotData$obj2
-modelDataOrdered[,4] <- x2pilotData$obj3
-modelDataOrdered[,5] <- x2pilotData$obj1OC27
-modelDataOrdered[,6] <- x2pilotData$obj2OC27
-modelDataOrdered[,7] <- x2pilotData$obj3OC27
-write.csv(modelDataOrdered, "X2_data/x2pilotDataModelOptimizedSorted.csv")
-write.csv(modelDataOrdered, "X2_data/x2pilotDataModelOptimizedSorted_global.csv")
+
+################################################################################
+# This code can be used to generate an order matrix of model and participant data for inspection: 
+#
+# modelDataOrdered <- matrix(-1,nrow(x2pilotData),34)
+# for(i in c(1:length(x2pilotData$X))) {
+#   for(j in c(1:length(x2pilotData$featValOrder[[i]]))) {
+#     modelDataOrdered[i,7+j] <- x2pilotData[[subjectGuessIndexM1+x2pilotData$featValOrder[[i]][j]]][i] 
+#     modelDataOrdered[i,16+j] <- x2pilotData[[modelGuessIndex1M1+x2pilotData$featValOrder[[i]][j]]][i] 
+#     modelDataOrdered[i,25+j] <- x2pilotData[[modelGuessIndex2M1+x2pilotData$featValOrder[[i]][j]]][i] 
+#   }
+# }
+# modelDataOrdered[,1] <- uniqueCCode
+# modelDataOrdered[,2] <- x2pilotData$obj1
+# modelDataOrdered[,3] <- x2pilotData$obj2
+# modelDataOrdered[,4] <- x2pilotData$obj3
+# modelDataOrdered[,5] <- x2pilotData$obj1OC27
+# modelDataOrdered[,6] <- x2pilotData$obj2OC27
+# modelDataOrdered[,7] <- x2pilotData$obj3OC27
+# write.csv(modelDataOrdered, "X2_data/x2pilotDataModelOptimizedSorted.csv")
+# write.csv(modelDataOrdered, "X2_data/x2pilotDataModelOptimizedSorted_global.csv")
 ################################################################################
 
 

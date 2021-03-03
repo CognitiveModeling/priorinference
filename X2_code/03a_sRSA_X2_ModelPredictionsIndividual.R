@@ -1,5 +1,8 @@
+source("X2_code/01_sRSA_X2_DataPreProcessing.R")
+
 ## reloading optimization values
-paramsUttWorkers <- as.matrix(read.csv("X2_data/x2Params_sRSA_indOpt_2019_10_11.csv"))
+paramsUttWorkers <- as.matrix(read.csv("x2_data/x2Params_sRSAexp_indOpt_2021_03_01.csv"))
+#paramsUttWorkers <- as.matrix(read.csv("X2_data/x2Params_sRSA_indOpt_S0.5_E1_2021_03_01.csv"))
 paramsUttWorkers <- paramsUttWorkers[ , 2:ncol(paramsUttWorkers)]
 
 #####################

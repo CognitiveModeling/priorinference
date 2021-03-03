@@ -15,7 +15,7 @@ idMax <- max(workerIDs)
 ## starting with 1 parameter RSA model optimizations... 
 # data is a matrix with data rows. column structure: [1:OC1,OC2,OC3,4:numUttOptions,7-X(max 15):TurkerSliderValues]
 ###################################################################################
-parOptType <- 4 ######## 1, 2, 3, or 4                        #####################
+parOptType <- 1 ######## 1, 2, 3, or 4                        #####################
 ###################################################################################
 
 klDivUttWorkers <- matrix(0,length(unique(workerIDs)), 15)

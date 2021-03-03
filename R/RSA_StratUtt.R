@@ -304,17 +304,17 @@ pragmaticSpeaker <- function(utterance, obj, preferencesPrior,
     if(preferencesPrior[pref] > 0) {
       #      print(c(utterance, objectPreferenceSoftPriors[[pref]]))
       pp <- pragmaticListener(utterance, objectPreferenceSoftPriors[[pref]],
-                                          validUtterances, currentObjects, uttToObjProbs, alpha)
+                              validUtterances, currentObjects, uttToObjProbs, alpha)
       prefPost[pref] <- pp[obj] * preferencesPrior[pref]
-#      print(c(pref, pp, preferencesPrior))
+      #      print(c(pref, pp, preferencesPrior))
     }
     #    print(c("PrefPost[]:", pref, prefPost[pref]))
   }
-#  print(c("PrefPost:",prefPost))
-#  print(c(utterance, obj, preferencesPrior, "rel",
-#          validUtterances,currentObjects))
-#  print(uttToObjProbs)
-#  print(objectPreferenceSoftPriors)
+  #  print(c("PrefPost:",prefPost))
+  #  print(c(utterance, obj, preferencesPrior, "rel",
+  #          validUtterances,currentObjects))
+  #  print(uttToObjProbs)
+  #  print(objectPreferenceSoftPriors)
   if(sum(prefPost) == 0) { # no evidence for any preferences... -> keep believing in the prior!
     return(prefPost)
   }
@@ -421,40 +421,28 @@ bestInfGainUtterance <- function(preferencesPrior, validUtterances, currentObjec
   for(utt in c(1:length(validUtterances))) { # evaluating the usage of a particular utterance utt
     prefPostAll <- rep(0, length(preferencesPrior))
     for(pref in c(1:length(preferencesPrior))) { # prior over the preferences the speaker is interested in
-      ### What is the likelihood that this particular preference prior is the correct one?
-      prefPost <- 0
-      for(obj in c(1:length(currentObjects)) ) {
-        if(uttToObjProbs[utt,obj] > 0) {
-          if(preferencesPrior[pref] > 0) { # only pay attention to preferences with non-zero probability
+      if(preferencesPrior[pref] > 0) { # only pay attention to preferences with non-zero probability
+        ### What is the likelihood that this particular preference prior is the correct one?
+        prefPost <- 0
+        for(obj in c(1:length(currentObjects)) ) {
+          if(uttToObjProbs[utt,obj] > 0) {
             objPrefPosterior <- pragmaticSpeaker(utt, obj, preferencesPrior,
                                                  validUtterances, currentObjects,
                                                  uttToObjProbs, objectPreferenceSoftPriors, alpha)
             # print(objPrefPosterior)
             KLvalue <- KLdivergence(preferencesPrior, objPrefPosterior)
- #           if(KLvalue > 0) {
-              # log-likelihood interpretation of KLvalue:
-              prefPost <- prefPost + uttToObjProbs[utt,obj] * utterancePrior[utt] *
-                                              preferencesPrior[pref] * objectPreferenceSoftPriors[[pref]][obj] *
-                                     exp(klValueFactor * KLvalue)
-#              prefPost <- prefPost + exp( log(uttToObjProbs[utt,obj] * utterancePrior[utt] *
-#                                                preferencesPrior[pref] * objectPreferenceSoftPriors[[pref]][obj]) +
-#                                            klValueFactor * KLvalue)
-
-              #              print(c(utt,KLvalue, exp(klValueFactor * KLvalue), prefPost))
-              # direct likelihood interpretation of KLvalue
-#                            prefPost<- prefPost + uttToObjProbs[utt,obj] * utterancePrior[utt] *
-#                              preferencesPrior[pref] * objectPreferenceSoftPriors[[pref]][obj] * klValueFactor * KLvalue
-            }
-            #            prefPost <- prefPost + KLvalue #utterancePrior[utt] *
-            #              objPrefPosterior[pref] *
-            #             objectPreferenceSoftPriors[[pref]][obj]
- #         }
+            #           if(KLvalue > 0) {
+            # log-likelihood interpretation of KLvalue:
+            prefPost <- prefPost + uttToObjProbs[utt,obj] * utterancePrior[utt] *
+              preferencesPrior[pref] * objectPreferenceSoftPriors[[pref]][obj] *
+              exp(klValueFactor * KLvalue)
+          } # else{} # imagined object choice is not valid (due to incompatible utterance)
+        } # done with considering all possible object choices.
+        if(prefPost > 0) {
+          prefPostAll[pref] <- prefPost
         }
-      }
-      if(prefPost > 0) {
-        prefPostAll[pref] <- prefPost
-      }
-    }
+      } # else{} # prior preference for this perference is zero
+    } # done with considering all possible preferences.
     InfGainUttPosterior[utt] <- sum(prefPostAll)
   }
   if(sum(InfGainUttPosterior) == 0) # no gain from any utterance...
@@ -462,63 +450,20 @@ bestInfGainUtterance <- function(preferencesPrior, validUtterances, currentObjec
   return(InfGainUttPosterior / sum(InfGainUttPosterior))
 }
 
-# ## Tests 1:
-# notObeyInst <- 1e-10
-# softPrefValue <- 0.1
-# alpha <- .1
-# currentObjects <- c(1,2,3)
-# validUtterances <- determineValidUtterances(currentObjects)
-# mapObjToUtt <- mapObjectToUtterances(currentObjects)
-# uttToObjProbs <- determineUttToObjectProbs(validUtterances,
-#                                                             currentObjects,
-#                                                             mapObjToUtt, notObeyInst)
-# objectPreferenceSoftPriors <- getObjectPreferencePriors(validUtterances, currentObjects,
-#                                                         softPrefValue, uttToObjProbs)
-# #pragmaticSpeaker <- function(utterance, obj, preferencesPrior,
-# #                             validUtterances, currentObjects, uttToObjProbs,
-# #                             objectPreferenceSoftPriors, alpha) {
-# pragmaticSpeaker(4, 1, c(0, 0, 0, 0, 0, 1), validUtterances, currentObjects,
-#                  uttToObjProbs, objectPreferenceSoftPriors, alpha) # sanity check - definite prior, no inf. gain possible
-# pragmaticSpeaker(4, 1, c(.2, .2, .2, .2, .2, 0), validUtterances, currentObjects,
-#                  uttToObjProbs, objectPreferenceSoftPriors, alpha) # NON compliant listener...
-#
-## Tests 2:
+## Test:
 # notObeyInst <- 0
 # softPrefValue <- .01
 # alpha <- 1
 # currentObjects <- c(1,2,6)
 # validUtterances <- determineValidUtterances(currentObjects)
 # mapObjToUtt <- mapObjectToUtterances(currentObjects)
-# uttToObjProbs <- determineUttToObjectProbs(validUtterances,
-#                                                             currentObjects,
-#                                                             mapObjToUtt, notObeyInst)
+# uttToObjProbs <- determineUttToObjectProbs(validUtterances, currentObjects,
+#                                                              mapObjToUtt, notObeyInst)
 # objectPreferenceSoftPriors <- getObjectPreferencePriors(validUtterances, currentObjects,
-#                                                         softPrefValue, uttToObjProbs)
-#bestInfGainUtterance <- function(preferencesPrior, validUtterances, currentObjects,
-#                                 uttToObjProbs, objectPreferenceSoftPriors, alpha)
-#bestInfGainUtterance(c(0, 0, 0, 0, 0, 0, 1), validUtterances, currentObjects,
-#                     uttToObjProbs, objectPreferenceSoftPriors, alpha) # sanity check - definite prior, no inf. gain possible
-#round(bestInfGainUtterance(c(.2, .2, .2, .2, .2, .2, 0), validUtterances, currentObjects,
-#                     uttToObjProbs, objectPreferenceSoftPriors, alpha, -10), 3) # sanity check - definite prior, no inf. gain possible
-#
-# kldFact <- (c(0:200)-100)/2
-# kldRes <- matrix(0,length(kldFact),6)
-# for(i in c(1:length(kldFact))) {
-#   kldRes[i,] <- round(bestInfGainUtterance(c(.1666, .1666, .1666, .1666, .1666, .1666, 0), validUtterances, currentObjects,
-#                              uttToObjProbs, objectPreferenceSoftPriors, alpha, kldFact[i]), 3) # sanity check - definite prior, no inf. gain possible
-# }
-# plot(kldFact, kldRes[,1], ylim = c(0:1))
-# lines(kldFact, kldRes[,2], col="black")
-# lines(kldFact, kldRes[,3], col="grey")
-# lines(kldFact, kldRes[,4], col="yellow")
-# lines(kldFact, kldRes[,5], col="orange")
-# lines(kldFact, kldRes[,6], col="blue")
-#
-# bestInfGainUtterance(c(.1666, .1666, .1666, .1666, .1666, .1666, 0), validUtterances, currentObjects,
-#                      uttToObjProbs, objectPreferenceSoftPriors, alpha, kldFact[i])
-#
-# round(pragmaticSpeaker(4, 1, c(.1666, .1666, .1666, .1666, .1666, .1666, 0),
-#                              validUtterances, currentObjects, uttToObjProbs,
-#                              objectPreferenceSoftPriors, alpha), 3)
-#
-
+#                                                          softPrefValue, uttToObjProbs)
+# bestInfGainUtterance(c(0, 0, 0, 0, 0, 0, 1), validUtterances, currentObjects,
+#                      uttToObjProbs, objectPreferenceSoftPriors, alpha) # sanity check - definite prior, no inf. gain possible
+# round(bestInfGainUtterance(c(1/6, 1/6, 1/6, 1/6, 1/6, 1/6, 0), validUtterances, currentObjects,
+#                            uttToObjProbs, objectPreferenceSoftPriors, alpha, 1), 3) # sanity check - definite prior, no inf. gain possible
+# round(bestInfGainUtterance(c(1/3, 1/3, 1/3, 0, 0, 0, 0), validUtterances, currentObjects,
+#                            uttToObjProbs, objectPreferenceSoftPriors, alpha, 1), 3) # sanity check - definite prior, no inf. gain possible

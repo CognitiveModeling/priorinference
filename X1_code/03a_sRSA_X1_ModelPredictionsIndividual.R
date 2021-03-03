@@ -86,7 +86,7 @@ write.csv(x1pilotData, "X1_data/x1pDataAugm_sRSA_indOpt_fixed00_and_fixed.20.csv
 }else if(procType == 2) {
   write.csv(x1pilotData, "X1_data/x1pDataAugm_sRSA_indOpt_PrefStrengthOpt_obed0_and_obed.2.csv")
 }else if(procType == 3) {
-  write.csv(x1pilotData, "X1_data/x1pDataAugm_sRSA_indOpt_PrefandObedOpt_and_fixed.2.2_test.csv")
+  write.csv(x1pilotData, "X1_data/x1pDataAugm_sRSA_indOpt_PrefandObedOpt_and_fixed.2.2.csv")
 }else if(procType == 4) {
   write.csv(x1pilotData, "X1_data/x1pDataAugm_sRSA_indOpt_PrefandObed100_and_uniform.csv")
 }

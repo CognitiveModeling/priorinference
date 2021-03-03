@@ -1,15 +1,15 @@
 # simple RSA with individual optimization
 #x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_fixed00_and_fixed.20.csv")
 #x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_PrefStrengthOpt_obed0_and_obed.2.csv")
-#x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_PrefandObedOpt_and_fixed.2.2.csv")
-
-# simple RSA with individual crossvalidation (leave-one-out) 
-x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_crossVal_Opt1_and_Opt2.csv")
-#x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_crossVal_Opt1obed.1_and_fixed.1.1.csv")
+x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_PrefandObedOpt_and_fixed.2.2.csv")
 
 # simple RSA global optimization
 #x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_globaOpt_fixed.1.1_and_OptPrefobedFixed.1.csv")
 #x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_globalOpt_OptPrefObedFixed0_and_Opt12.csv")
+
+# simple RSA with individual crossvalidation (leave-one-out) 
+#x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_crossVal_Opt1_and_Opt2.csv")
+#x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_crossVal_Opt1obed.1_and_fixed.1.1.csv")
 
 
 # adding feature property codes (which feature was uttereed, which features were questioned)
@@ -58,29 +58,37 @@ modelGuessIndexM2 <- grep("^Post2_1", colnames(x1pilotData)) - 1
 for(i in c(1:nrow(x1pilotData))) {
   currentObjects <- c(targetOC27[i], obj2OC27[i], obj3OC27[i])
   validUtterances <- determineValidUtterances(currentObjects)
+
   for(j in c(1:3)) { # iterating over the three feature types
     relevantIndices <- which(validUtterances>(3*(j-1)) & validUtterances<(3*j + 1)) # relevant indices for a particular feature type
     valUttRel <- validUtterances[relevantIndices]
-    sumSG <- 0
-    sumMG <- 0
-    sumMG2 <- 0
-    for(x in c(1:length(valUttRel))) {
-      sumSG <- sumSG + x1pilotData[[valUttRel[x]+subjectGuessIndexM1]][i]
-      sumMG <- sumMG + x1pilotData[[valUttRel[x]+modelGuessIndexM1]][i]
-      sumMG2 <- sumMG2 + x1pilotData[[valUttRel[x]+modelGuessIndexM2]][i]
-    }
-    if(!is.na(sumSG)) {
+    if(length(relevantIndices)>1){
+      sumSG <- 0
+      sumMG <- 0
+      sumMG2 <- 0
       for(x in c(1:length(valUttRel))) {
-        x1pilotData[[valUttRel[x]+subjectGuessIndexM1]][i] <- x1pilotData[[valUttRel[x]+subjectGuessIndexM1]][i] /
-          (sumSG + 1e-100)
+        sumSG <- sumSG + x1pilotData[[valUttRel[x]+subjectGuessIndexM1]][i]
+        sumMG <- sumMG + x1pilotData[[valUttRel[x]+modelGuessIndexM1]][i]
+        sumMG2 <- sumMG2 + x1pilotData[[valUttRel[x]+modelGuessIndexM2]][i]
       }
+      if(!is.na(sumSG)) {
+        for(x in c(1:length(valUttRel))) {
+          x1pilotData[[valUttRel[x]+subjectGuessIndexM1]][i] <- x1pilotData[[valUttRel[x]+subjectGuessIndexM1]][i] /
+            (sumSG + 1e-100)
+        }
+      }
+      for(x in c(1:length(valUttRel))) {
+        x1pilotData[[valUttRel[x]+modelGuessIndexM1]][i] <- x1pilotData[[valUttRel[x]+modelGuessIndexM1]][i] /
+          (sumMG + 1e-100)
+        x1pilotData[[valUttRel[x]+modelGuessIndexM2]][i] <- x1pilotData[[valUttRel[x]+modelGuessIndexM2]][i] /
+          (sumMG2 + 1e-100)
+      }
+    }else{# set single feature value case to NA
+      x1pilotData[[subjectGuessIndexM1 + valUttRel[1]]][i] <- NA
+      x1pilotData[[modelGuessIndexM1 + valUttRel[1]]][i] <- NA
+      x1pilotData[[modelGuessIndexM2 + valUttRel[1]]][i] <- NA
     }
-    for(x in c(1:length(valUttRel))) {
-      x1pilotData[[valUttRel[x]+modelGuessIndexM1]][i] <- x1pilotData[[valUttRel[x]+modelGuessIndexM1]][i] /
-        (sumMG + 1e-100)
-      x1pilotData[[valUttRel[x]+modelGuessIndexM2]][i] <- x1pilotData[[valUttRel[x]+modelGuessIndexM2]][i] /
-        (sumMG2 + 1e-100)
-    }
+    
     # setting the non-represented values to NA
     for(v in c(1:3)) {
       if(length(which(valUttRel == ((j-1)*3) + v )) == 0) {
@@ -121,9 +129,9 @@ modelGuessIndex4 <- grep("^Post2_1", colnames(x1pilotData))
 for(i in c(1:length(x1pilotData$X))) {
   # reordering the feature order
   x1pilotData[i,] <- replace(x1pilotData[i,], c(subjectGuessIndex:(subjectGuessIndex+8)),  
-                           x1pilotData[i, c( (subjectGuessIndex + (featureOrder[i,1]-1)*3) : (subjectGuessIndex+2+(featureOrder[i,1]-1)*3),
-                                           (subjectGuessIndex+ (featureOrder[i,2]-1)*3) : (subjectGuessIndex+2+(featureOrder[i,2]-1)*3),
-                                           (subjectGuessIndex+ (featureOrder[i,3]-1)*3) : (subjectGuessIndex+2+(featureOrder[i,3]-1)*3) )])
+                             x1pilotData[i, c( (subjectGuessIndex + (featureOrder[i,1]-1)*3) : (subjectGuessIndex+2+(featureOrder[i,1]-1)*3),
+                                               (subjectGuessIndex+ (featureOrder[i,2]-1)*3) : (subjectGuessIndex+2+(featureOrder[i,2]-1)*3),
+                                               (subjectGuessIndex+ (featureOrder[i,3]-1)*3) : (subjectGuessIndex+2+(featureOrder[i,3]-1)*3) )])
   x1pilotData[i,] <- replace(x1pilotData[i,], c(modelGuessIndex1:(modelGuessIndex1+8)),  
                              x1pilotData[i, c( (modelGuessIndex1 + (featureOrder[i,1]-1)*3) : (modelGuessIndex1+2+(featureOrder[i,1]-1)*3),
                                                (modelGuessIndex1+ (featureOrder[i,2]-1)*3) : (modelGuessIndex1+2+(featureOrder[i,2]-1)*3),
@@ -135,7 +143,7 @@ for(i in c(1:length(x1pilotData$X))) {
   ## now rearranging the individual feature values dependent on the object order (first object is the chosen one!)
   objectConstellation <- c(targetOC27[i],obj2OC27[i],obj3OC27[i])
   objectCReordered <- replace(objectConstellation, c(1:3), objectConstellation[objectOrder[i,]])
-
+  
   for(j in c(1:3)) {
     featValOrder <- rep(0,3)
     targetFeatureValue <- allObjectsToUtterancesMappings[objectCReordered[1],featureOrder[i,j]]
@@ -160,7 +168,7 @@ for(i in c(1:length(x1pilotData$X))) {
     ### now featValOrder specifies the feature value reordering for order feature with index j
     # reordering the feature value order of ordered feature j 
     x1pilotData[i,] <- replace(x1pilotData[i,], c(((j-1)*3 + subjectGuessIndex):(2+((j-1)*3 + subjectGuessIndex))),  
-                             x1pilotData[i, subjectGuessIndex + ((j-1)*3 + featValOrder)]) 
+                               x1pilotData[i, subjectGuessIndex + ((j-1)*3 + featValOrder)]) 
     x1pilotData[i,] <- replace(x1pilotData[i,], c(((j-1)*3 + modelGuessIndex1):(2+((j-1)*3 + modelGuessIndex1))),  
                                x1pilotData[i, modelGuessIndex1 + ((j-1)*3 + featValOrder)]) 
     x1pilotData[i,] <- replace(x1pilotData[i,], c(((j-1)*3 + modelGuessIndex4):(2+((j-1)*3 + modelGuessIndex4))),  
@@ -184,13 +192,13 @@ for(i in c(1:length(myCCodes))) {
   for(j in c(1:9)) {
     specCases <- which(is.na(allPilotDataCases[,subjectGuessIndex-1+j]) == FALSE)
     if(length(specCases) > 0) {
-#      if(mean(allPilotDataCases[specCases,(modelGuessIndex4-1+j)]) < 1/3 - 1e-5
-#         | mean(allPilotDataCases[specCases,(modelGuessIndex4-1+j)]) > 1/3 + 1e-5) {
-        dataPointIndex <- dataPointIndex + 1
-        workerData[dataPointIndex] <- mean(allPilotDataCases[specCases,(subjectGuessIndex-1+j)])
-        rsaModel[dataPointIndex] <- mean(allPilotDataCases[specCases,(modelGuessIndex1-1+j)])
-        rsaModel2[dataPointIndex] <- mean(allPilotDataCases[specCases,(modelGuessIndex4-1+j)])
-#      }
+      #      if(mean(allPilotDataCases[specCases,(modelGuessIndex4-1+j)]) < 1/3 - 1e-5
+      #         | mean(allPilotDataCases[specCases,(modelGuessIndex4-1+j)]) > 1/3 + 1e-5) {
+      dataPointIndex <- dataPointIndex + 1
+      workerData[dataPointIndex] <- mean(allPilotDataCases[specCases,(subjectGuessIndex-1+j)])
+      rsaModel[dataPointIndex] <- mean(allPilotDataCases[specCases,(modelGuessIndex1-1+j)])
+      rsaModel2[dataPointIndex] <- mean(allPilotDataCases[specCases,(modelGuessIndex4-1+j)])
+      #      }
     }
   }
 }

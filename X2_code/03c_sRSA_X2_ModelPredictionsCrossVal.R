@@ -1,3 +1,5 @@
+source("X2_code/01_sRSA_X2_DataPreProcessing.R")
+
 ## Generating the Unique Item codes
 # constellationCode <- matrix(0,length(x2pilotData$X),6)
 uniqueCCode <- rep("", length(x2pilotData$X))
@@ -12,7 +14,7 @@ x2pilotData$itemCode <- uniqueCCode
 ## starting with 1 parameter RSA model optimizations... 
 # data is a matrix with data rows. column structure: [1:OC1,OC2,OC3,4:numUttOptions,7-X(max 15):TurkerSliderValues]
 ###################################################################################
-parOptType <- 34 ########  12 OR 34  ##############################################
+parOptType <- 12 ########  12 OR 34  ##############################################
 ###################################################################################
 
 if(parOptType == 12) {

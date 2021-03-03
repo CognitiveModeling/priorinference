@@ -1,3 +1,5 @@
+source("X2_code/01_sRSA_X2_DataPreProcessing.R")
+
 ## recording KL divergence and parameters (base model, 1 param, 2 params)
 workerIDs <- x2pilotData$workerid
 idMax <- max(workerIDs)
@@ -85,13 +87,14 @@ for(workerID in c(0:idMax)) {
     paramsUttWorkers[workerIndex,11] <- optRes3$par[3]
     ##    
     print(c("Done with worker ",workerIndex," with worder ID ", workerID))
-    print(c(klDivUttWorkers[workerIndex,], paramsUttWorkers[workerIndex,]))
+    print(klDivUttWorkers[workerIndex,])
+    print(paramsUttWorkers[workerIndex,])
     ####
     workerIndex <- workerIndex + 1
   }
 }
 
-write.csv(klDivUttWorkers, "X2_data/x2KLDivs_sRSA_indOpt_2019_10_11.csv")
-write.csv(paramsUttWorkers, "X2_data/x2Params_sRSA_indOpt_2019_10_11.csv")
+write.csv(klDivUttWorkers, "X2_data/x2KLDivs_sRSA_indOpt_2021_03_01.csv")
+write.csv(paramsUttWorkers, "X2_data/x2Params_sRSA_indOpt_2021_03_01.csv")
 
 

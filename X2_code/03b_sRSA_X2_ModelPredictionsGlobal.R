@@ -1,3 +1,5 @@
+source("X2_code/01_sRSA_X2_DataPreProcessing.R")
+
 ## reloading optimization values
 paramsUttWorkers <- as.matrix(read.csv("X2_data/x2Params_sRSA_globalOpt_2019_12_20.csv"))
 paramsUttWorkers <- paramsUttWorkers[ , 2:ncol(paramsUttWorkers)]
