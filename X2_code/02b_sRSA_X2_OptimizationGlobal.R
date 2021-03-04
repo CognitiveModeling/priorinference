@@ -6,6 +6,7 @@ paramsUttWorkers <- matrix(0, 1, 11)
 
 #####################################################################################
 ## Starting with simple base model determination - global KLDivUttWorkers value    ##
+## Note that the KL values here do NOT filter out those feature values that are NOT in the objects.
 #####################################################################################
 for(i in c(1:length(workerIDs))) {
   len <- x2pilotData$numFeatures[i]

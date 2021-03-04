@@ -4,7 +4,7 @@ source("X1_code/01_sRSA_X1_DataPreProcessing.R")
 workerIDs <- x1pilotData$workerid
 
 ##
-workerID <- 23 
+workerID <- 30
 
 idICases <- which(workerIDs == workerID)
 

@@ -5,8 +5,8 @@ llWorkers12 <- matrix(0,length(unique(workerIDs)), 5)
 paramsWorkers12 <- matrix(0,length(unique(workerIDs)), 5)
 
 ##########
-## Starting with simple base model determination:
-##
+## Starting with simple base model determination.
+## Note that the KL values here do NOT filter out those feature values that are NOT in the objects.
 workerIndex <- 1
 for(workerID in c(0:idMax)) {
   idICases <- which(workerIDs == workerID)

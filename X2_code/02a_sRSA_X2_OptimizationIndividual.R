@@ -8,6 +8,7 @@ paramsUttWorkers <- matrix(0,length(unique(workerIDs)), 11)
 
 #######################################################
 ## Starting with simple base model determination:    ##
+## Note that the KL values here do NOT filter out those feature values that are NOT in the objects.
 #######################################################
 workerIndex <- 1
 for(workerID in c(0:idMax)) {

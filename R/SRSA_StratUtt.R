@@ -597,19 +597,24 @@ simpleBestInfGainUtteranceWithPrefPriorAll <-
 
 #
 # # Test:
-# notObeyInst <- 0
-# softPrefValue <- 0.01
-# currentObjects <- c(1,2,6)
-# targetFeature <- 1
-# klValueFactor <- 1
-# relevantUtterances <- determineValidUtterances(currentObjects)
-# mapObjToUtt <- mapObjectToUtterances(currentObjects)
-# uttToObjProbs <- determineUttToObjectProbs(relevantUtterances,
-#                                            currentObjects,
-#                                            mapObjToUtt, notObeyInst)
-# objectPreferenceSoftPriors <- getObjectPreferencePriors(relevantUtterances, currentObjects,
-#                                                         softPrefValue, uttToObjProbs)
-# preferencesPriorAll <- getPreferencesPrior(1)
+notObeyInst <- 1
+softPrefValue <- 1
+currentObjects <- c(25,13,16)
+allObjects[currentObjects,]
+targetFeature <- 1
+klValueFactor <- 1
+relevantUtterances <- determineValidUtterances(currentObjects)
+mapObjToUtt <- mapObjectToUtterances(currentObjects)
+uttToObjProbs <- determineUttToObjectProbs(relevantUtterances,
+                                          currentObjects,
+                                          mapObjToUtt, notObeyInst)
+mapUttToObjDeterministic <- determineUttToObjectProbs(relevantUtterances,
+                                                      currentObjects,
+                                                      mapObjToUtt, 0)
+objectPreferenceSoftPriors <- getObjectPreferencePriors(relevantUtterances, currentObjects,
+                                                         softPrefValue, mapUttToObjDeterministic)
+preferencesPriorAll <- getPreferencesPrior(1)
+simpleListener(4,uttToObjProbs, objectPreferenceSoftPriors[[2]])
 # 
 # 
 # ## Setting the utterance Prior uniformly over the allowed utterances 

@@ -8,9 +8,9 @@ uniqueItemCodes <- sort(unique(x1pilotData$itemCode))
 # parameter-based Simple RSA model optimizations...
 # leave one out parameter determination for each participant!
 
-###################################################################################
-parOptType <-2 ######## number of parameters to be optimized (1 or 2). ############
-###################################################################################
+#################################################################################################################################
+parOptType <-3 ######## which parameters are to be optimized 1=gamma (beta=0); 2=gamma (beta=.1) or 3=gamma and beta ############
+#################################################################################################################################
 
 llWorkers12 <- matrix(0,length(unique(workerIDs)), 15)
 klDivCrossValValues <- matrix(0,length(unique(workerIDs)), 15)
