@@ -543,5 +543,11 @@ remove(data)
 
 ## Big data set ####
 
+all_models <- list(0,26)
+for (i in 1:26){
+  all_models[i] <- paste("m",i, sep = "")
+}
+full <- rbind(all_models)
+
 full <- rbind(m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,m14,m15,m16,m17,m18,m19,m20,m21,m22,m23,m24,m25,m26)
 write.csv(full,"X3_Plots/for_scatterplots_x3_updated.csv")

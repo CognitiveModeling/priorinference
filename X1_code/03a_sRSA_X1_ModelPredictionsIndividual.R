@@ -1,3 +1,4 @@
+source("X1_code/01_sRSA_X1_DataPreProcessing.R")
 ## recording KL divergence and parameters (base model, 1 param, 2 params)
 workerIDs <- x1pilotData$workerid
 idMax <- max(workerIDs)
@@ -9,7 +10,7 @@ llWorkers12 <- llWorkers12[,c(2:ncol(llWorkers12))]
 paramsWorkers12 <- paramsWorkers12[,c(2:ncol(paramsWorkers12))]
 
 ############################################################################################
-procType <- 4    ###########################################################################
+procType <- 5    ###########################################################################
 ############################################################################################
 
 ### 
@@ -59,6 +60,11 @@ for(i in c(1:length(x1pilotData$X))) {
   postListMat1Opt[i,] <- determineSpeakerPostListPrefsSimpleRSA(objectConstellation, featChoice, 
                                                                 100, 100)
   postListMat2Opt[i,] <- rep((1/3),9)
+  } else if(procType == 5) {
+    postListMat1Opt[i,] <- determineSpeakerPostListPrefsSimpleRSA(objectConstellation, featChoice, 
+                                                                  0, 0)
+    postListMat2Opt[i,] <- determineSpeakerPostListPrefsSimpleRSA(objectConstellation, featChoice, 
+                                                                  abs(params12[1]), abs(params12[2]))
   }
 }
 
@@ -89,4 +95,6 @@ write.csv(x1pilotData, "X1_data/x1pDataAugm_sRSA_indOpt_fixed00_and_fixed.20.csv
   write.csv(x1pilotData, "X1_data/x1pDataAugm_sRSA_indOpt_PrefandObedOpt_and_fixed.2.2.csv")
 }else if(procType == 4) {
   write.csv(x1pilotData, "X1_data/x1pDataAugm_sRSA_indOpt_PrefandObed100_and_uniform.csv")
+} else if(procType == 5) {
+  write.csv(x1pilotData, "X1_data/x1pDataAugm_sRSA_indOpt_fixed00_and_PrefandObedOpt.csv")
 }

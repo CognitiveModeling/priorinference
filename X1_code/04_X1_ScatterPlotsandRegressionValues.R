@@ -1,15 +1,26 @@
 # simple RSA with individual optimization
-#x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_fixed00_and_fixed.20.csv")
-#x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_PrefStrengthOpt_obed0_and_obed.2.csv")
-x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_PrefandObedOpt_and_fixed.2.2.csv")
+# x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_fixed00_and_fixed.20.csv")
+# x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_PrefStrengthOpt_obed0_and_obed.2.csv")
+# x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_PrefandObedOpt_and_fixed.2.2.csv")
+############# For barplots ####################
+# x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_fixed00_and_PrefandObedOpt.csv")
 
 # simple RSA global optimization
 #x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_globaOpt_fixed.1.1_and_OptPrefobedFixed.1.csv")
-#x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_globalOpt_OptPrefObedFixed0_and_Opt12.csv")
+#x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_globalOpt_OptPrefObedFixed_and_Opt12.csv")
 
 # simple RSA with individual crossvalidation (leave-one-out) 
 #x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_crossVal_Opt1_and_Opt2.csv")
 #x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_crossVal_Opt1obed.1_and_fixed.1.1.csv")
+
+######################################## Full RSA ###############################################
+# x1pilotData <- read.csv("X1_Data/x1pDataAugm_fRSA_indOpt_fixed001_and_OptPrefandAlphaObed0.csv")
+# x1pilotData <- read.csv("X1_Data/x1pDataAugm_fRSA_indOpt_OptPrefAndObedAlpha1_and_OptAll3.csv")
+
+# full RSA global optimization
+
+# x1pilotData <- read.csv("X1_Data/x1pDataAugm_fRSAglobalOpt_Opt1_and__Opt1obed.1.csv")
+# x1pilotData <- read.csv("X1_Data/x1pDataAugm_fRSAglobalOpt_Opt13_and__Opt123.csv")
 
 
 # adding feature property codes (which feature was uttereed, which features were questioned)
@@ -176,7 +187,10 @@ for(i in c(1:length(x1pilotData$X))) {
   }
 }
 x1pilotData$CCode <- uniqueCCode
-#write.csv(x1pilotData, "x1pilotDataModelOptimizedSorted.csv")
+
+# Saves sorted data for barplots
+
+#write.csv(x1pilotData, "X1_data/x1pilotDataModelOptimizedSorted.csv")
 
 x1pilotData <- x1pilotData[order(x1pilotData$CCode),]
 myCCodes <- unique(x1pilotData$CCode)
@@ -222,7 +236,4 @@ lines(lowess(rsaModel2,workerData), col="blue") # lowess line (x,y)
 model <- lm(formula = rsaModel2~workerData)
 summary(model)
 confint(model)
-
-
-
 
