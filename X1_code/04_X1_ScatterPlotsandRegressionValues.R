@@ -15,6 +15,7 @@ x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_fixed00_and_PrefandObed
 
 ######################################## Full RSA ###############################################
 # x1pilotData <- read.csv("X1_Data/x1pDataAugm_fRSA_indOpt_fixed001_and_OptPrefandAlphaObed0.csv")
+# model <- "full"
 # x1pilotData <- read.csv("X1_Data/x1pDataAugm_fRSA_indOpt_OptPrefAndObedAlpha1_and_OptAll3.csv")
 
 # full RSA global optimization
@@ -191,6 +192,9 @@ x1pilotData$CCode <- uniqueCCode
 # Saves sorted data for barplots
 
 #write.csv(x1pilotData, "X1_data/x1pilotDataModelOptimizedSorted.csv")
+if (model == "full"){
+  write.csv(x1pilotData, "X1_data/x1pilotDataModelOptimizedSorted_full.csv")
+}
 
 x1pilotData <- x1pilotData[order(x1pilotData$CCode),]
 myCCodes <- unique(x1pilotData$CCode)
