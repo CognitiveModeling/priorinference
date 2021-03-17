@@ -3,7 +3,7 @@
 # x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_PrefStrengthOpt_obed0_and_obed.2.csv")
 # x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_PrefandObedOpt_and_fixed.2.2.csv")
 ############# For barplots ####################
-# x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_fixed00_and_PrefandObedOpt.csv")
+x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_indOpt_fixed00_and_PrefandObedOpt.csv")
 
 # simple RSA global optimization
 #x1pilotData <- read.csv("X1_data/x1pDataAugm_sRSA_globaOpt_fixed.1.1_and_OptPrefobedFixed.1.csv")
