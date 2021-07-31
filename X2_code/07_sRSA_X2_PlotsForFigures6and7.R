@@ -33,12 +33,12 @@ print.data.frame(ordered)
 ### Subsets for figures in the paper. Pick one plotData subset, then run the define variables part
 ### Then generate the plot either with ggplot or a simple plot
 
-# for m1
-plotData <- subset(full, softness == 0 & obedience == 0 & 
-                        kl_factor == 1 &
-                          cross_validated == "no" & type == "fullRSA" & 
-                          alpha == 1) 
 
+############ Figure 15 #####################
+
+### Baseline model ##
+
+plotData <- subset(full, Nr == 20)
 
 r2 <- round((summary(lm(plotData$model~plotData$workerData))$r.squared), digits = 4)
 softness <- unique(as.character(plotData$softness))
@@ -47,46 +47,28 @@ type <- unique(as.character(plotData$type))
 nr <- plotData$Nr[1]
 
 
-figure <- ggplot(plotData, aes(x = model, y = workerData)) +
+figure_base <- ggplot(plotData, aes(x = model, y = workerData)) +
   geom_point(shape = 1) +
   stat_smooth(method = "lm",
               col = "black",
               se = FALSE,
               size = .5) +
-  theme_bw(base_size = 14) +
-  labs(title = "Full model")+
+  theme_bw(base_size = 8) +
+  labs(title = "Baseline model", subtitle = "Uniform")+
   #  labs(title = bquote(atop
   #                     (.(type) ~"," ~ r^2 == .(r2),
   #                       ~ "softness" == .(softness) ~ "," ~ "obedience" == .(obedience)
   #                     )))+
   ylab("human data")+
   xlab("model predictions") +
-  theme(plot.title = element_text(hjust = 0.5))
-print(figure)
-ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x2_m", nr,".pdf", sep=""))
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
+print(figure_base)
+#ggsave(figure, height = 3, width = 3, units = "in", filename = paste("X2_Plots/x2_m", nr,".pdf", sep=""))
 
 model <- lm(formula = plotData$model~plotData$workerData)
 summary(model)
 confint(model)
 
-
-# for m6
-plotData <- subset(full, softness == "individually_opt" & obedience == "individually_opt" & 
-                     kl_factor == "individually_opt" &
-                     cross_validated == "no" & type == "fullRSA" & 
-                     alpha == 1) 
-
-# for m4
-plotData <- subset(full, softness == 0 & obedience == "individually_opt" & 
-                     kl_factor == "individually_opt" &
-                     cross_validated == "no" & type == "fullRSA" & 
-                     alpha == 1) 
-
-# for m2
-plotData <- subset(full, softness == "individually_opt" & obedience == 0 & 
-                     kl_factor == 1 &
-                     cross_validated == "no" & type == "fullRSA" & 
-                     alpha == 1) 
 # for m7
 # Shortcut to do subsets. List_of_models_x2.csv says which model is which
 
@@ -99,13 +81,13 @@ type <- unique(as.character(plotData$type))
 nr <- plotData$Nr[1]
 
 
-figure <- ggplot(plotData, aes(x = model, y = workerData)) +
+figure_nonopt <- ggplot(plotData, aes(x = model, y = workerData)) +
   geom_point(shape = 1) +
   stat_smooth(method = "lm",
               col = "black",
               se = FALSE,
               size = .5) +
-  theme_bw(base_size = 14) +
+  theme_bw(base_size = 8) +
   labs(title = "Simple model",subtitle = "Non-optimized")+
   #  labs(title = bquote(atop
   #                     (.(type) ~"," ~ r^2 == .(r2),
@@ -114,23 +96,15 @@ figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   ylab("human data")+
   xlab("model predictions") +
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
-print(figure)
-ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x2_m", nr,".pdf", sep=""))
+print(figure_nonopt)
 
-model <- lm(formula = plotData$model~plotData$workerData)
-summary(model)
-confint(model)
+fig15 <- grid.arrange(figure_base, figure_nonopt, ncol = 2)
+ggsave(fig15, height = 2.5, width = 5, units = "in", filename = "X2_plots/fig15.pdf")
 
 
-# for m9
-plotData <- subset(full, Nr == 9) 
-model <- lm(formula = plotData$model~plotData$workerData)
-summary(model)
+######################################
 
-# for m10
-plotData <- subset(full, Nr == 10)
-model <- lm(formula = plotData$model~plotData$workerData)
-summary(model)
+########## Figure 16 #################
 
 # for m11 KL individually optimized
 plotData <- subset(full, Nr == 11)
@@ -144,14 +118,14 @@ type <- unique(as.character(plotData$type))
 nr <- plotData$Nr[1]
 
 
-figure <- ggplot(plotData, aes(x = model, y = workerData)) +
+figure_individual <- ggplot(plotData, aes(x = model, y = workerData)) +
   geom_point(shape = 1) +
   stat_smooth(method = "lm",
               col = "black",
               se = FALSE,
               size = .5) +
-  theme_bw(base_size = 14) +
-  labs(title = "Simple model", subtitle = "Individually optimized")+
+  theme_bw(base_size = 8) +
+  labs(title = "KL factor", subtitle = "Individually optimized")+
   #  labs(title = bquote(atop
   #                     (.(type) ~"," ~ r^2 == .(r2),
   #                       ~ "softness" == .(softness) ~ "," ~ "obedience" == .(obedience)
@@ -159,27 +133,12 @@ figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   ylab("human data")+
   xlab("model predictions") +
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
-print(figure)
-ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x2_m", nr,".pdf", sep=""))
+print(figure_individual)
+#ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x2_m", nr,".pdf", sep=""))
 
-model <- lm(formula = plotData$model~plotData$workerData)
-summary(model)
-confint(model)
+######## Global optimization plot ############
 
-
-# for m9
-
-# for m13
-plotData <- subset(full, Nr == 13)
-
-# for m14
-plotData <- subset(full, Nr == 14)
-
-plotData <- subset(full, Nr == 15)
-model <- lm(formula = plotData$model~plotData$workerData)
-summary(model)
-
-plotData <- subset(full, Nr == 20)
+plotData <- subset(full, Nr == 21)
 
 r2 <- round((summary(lm(plotData$model~plotData$workerData))$r.squared), digits = 4)
 softness <- unique(as.character(plotData$softness))
@@ -188,14 +147,14 @@ type <- unique(as.character(plotData$type))
 nr <- plotData$Nr[1]
 
 
-figure <- ggplot(plotData, aes(x = model, y = workerData)) +
+figure_global <- ggplot(plotData, aes(x = model, y = workerData)) +
   geom_point(shape = 1) +
   stat_smooth(method = "lm",
               col = "black",
               se = FALSE,
               size = .5) +
-  theme_bw(base_size = 14) +
-  labs(title = "Baseline model")+
+  theme_bw(base_size = 8) +
+  labs(title = "KL factor", subtitle = "Globally optimized")+
   #  labs(title = bquote(atop
   #                     (.(type) ~"," ~ r^2 == .(r2),
   #                       ~ "softness" == .(softness) ~ "," ~ "obedience" == .(obedience)
@@ -204,29 +163,19 @@ figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   xlab("model predictions") +
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
 print(figure)
-ggsave(figure, height = 3, width = 3, units = "in", filename = paste("X2_Plots/x2_m", nr,".pdf", sep=""))
+#ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x2_m", nr,".pdf", sep=""))
 
 model <- lm(formula = plotData$model~plotData$workerData)
 summary(model)
 confint(model)
 
-plotData <- subset(full, Nr == 24)
-model <- lm(formula = plotData$model~plotData$workerData)
-summary(model)
-# Define variables to pass to plot title and ggsave
+fig16 <- grid.arrange(figure_global, figure_individual, ncol = 2)
+ggsave(fig16, height = 2.5, width = 5, units = "in", filename = "X2_plots/fig16.pdf")
 
-r2 <- round((summary(lm(plotData$model~plotData$workerData))$r.squared), digits = 2)
-#ci <- round((confint(lm(plotData$model~plotData$workerData))), digits = 2)
-#ci <- ci[c(2,4)]
-softness <- unique(as.character(plotData$softness))
-obedience <- unique(as.character(plotData$obedience))
-type <- unique(as.character(plotData$type))
-kl_factor <- unique(as.character(plotData$kl_factor))
-nr <- plotData$Nr[1]
+##################################
 
-
-## Scatterplot with ggplot2 ##
-# Contains a title with parameter values for now ##
+## General code for scatterplots with ggplot2 ##
+# Contains a title with parameter values ##
 
 figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   geom_point() +
@@ -245,40 +194,6 @@ figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   theme(plot.title = element_text(hjust = 0.5))
 #print(figure)
 ggsave(figure, filename = paste("x2_m", nr,".pdf", sep=""),width = 7, height = 7, units = "in")
-
-
-######## Global optimization plot ############
-
-plotData <- subset(full, Nr == 21)
-
-r2 <- round((summary(lm(plotData$model~plotData$workerData))$r.squared), digits = 4)
-softness <- unique(as.character(plotData$softness))
-obedience <- unique(as.character(plotData$obedience))
-type <- unique(as.character(plotData$type))
-nr <- plotData$Nr[1]
-
-
-figure <- ggplot(plotData, aes(x = model, y = workerData)) +
-  geom_point(shape = 1) +
-  stat_smooth(method = "lm",
-              col = "black",
-              se = FALSE,
-              size = .5) +
-  theme_bw(base_size = 14) +
-  labs(title = "Simple model", subtitle = "Globally optimized")+
-  #  labs(title = bquote(atop
-  #                     (.(type) ~"," ~ r^2 == .(r2),
-  #                       ~ "softness" == .(softness) ~ "," ~ "obedience" == .(obedience)
-  #                     )))+
-  ylab("human data")+
-  xlab("model predictions") +
-  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
-print(figure)
-ggsave(figure, height = 3, width = 3, units = "in", filename = paste("x2_m", nr,".pdf", sep=""))
-
-model <- lm(formula = plotData$model~plotData$workerData)
-summary(model)
-confint(model)
 
 
 
