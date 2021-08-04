@@ -1,6 +1,7 @@
 library("dplyr")
 library("ggplot2")
 library("magrittr")
+library("gridExtra")
 
 ################################################## X 1 Prior inference ##################################
 
@@ -21,7 +22,7 @@ print.data.frame(ordered)
 
 ### Subsets for figures in the paper. 
 
-## Figure \label{simple-full}
+## Figure 10
 
 ################ M1 Simple non-optimized model ################
 plotData <- subset(full, softness == 0 & obedience == 0 & 
@@ -38,7 +39,7 @@ nr <- plotData$Nr[1]
 figure <- ggplot(plotData, aes(x = model, y = workerData)) +
   geom_point(shape = 1, size = 1) +
   stat_smooth(method = "lm",
-              col = "darkgrey",
+              col = "black",
               se = FALSE,
               size = .5) +
   theme_bw(base_size = 8) +
@@ -80,7 +81,7 @@ print(figure_full)
 fig10 <- grid.arrange(figure, figure_full, ncol = 2)
 ggsave(fig10, height = 2.5, width = 5, units = "in", filename = "X1_plots/fig10.pdf")
 
-## Cognition Figure 10 ##
+## Cognition Figure 11 ##
 
 
 
